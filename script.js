@@ -170,4 +170,38 @@ document.addEventListener('DOMContentLoaded', function() {
     if (heroImage) {
         heroImage.classList.add('zoom-in-on-load');
     }
+
+    // Typewriter effect for hero subtitle
+    const typewriterPhrases = [
+        "Bridging technology with human psychology through innovative solutions",
+        "Passionate about Full Stack Development & AI",
+        "Organizing tech events and mentoring peers",
+        "Building student-centric platforms"
+    ];
+    let twIndex = 0, twChar = 0, twDeleting = false;
+    const twText = document.getElementById('typewriter-text');
+    const twCursor = document.querySelector('.typewriter-cursor');
+    function typewriterTick() {
+        if (!twText) return;
+        const phrase = typewriterPhrases[twIndex];
+        if (!twDeleting) {
+            twChar++;
+            if (twChar > phrase.length) {
+                twDeleting = true;
+                setTimeout(typewriterTick, 1200);
+                return;
+            }
+        } else {
+            twChar--;
+            if (twChar === 0) {
+                twDeleting = false;
+                twIndex = (twIndex + 1) % typewriterPhrases.length;
+                setTimeout(typewriterTick, 400);
+                return;
+            }
+        }
+        twText.textContent = phrase.substring(0, twChar);
+        setTimeout(typewriterTick, twDeleting ? 40 : 80);
+    }
+    if (twText) typewriterTick();
 });

@@ -1012,3 +1012,165 @@ p {
         font-size: 0.95rem;
     }
 }
+
+/* --- Hero Background Blobs --- */
+.hero-bg-blobs {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.25;
+    filter: blur(8px);
+    animation: blobMove 18s infinite alternate ease-in-out;
+}
+.blob1 {
+    width: 320px; height: 320px;
+    background: var(--accent);
+    top: -80px; left: -100px;
+    animation-delay: 0s;
+}
+.blob2 {
+    width: 220px; height: 220px;
+    background: var(--beige);
+    bottom: -60px; right: -60px;
+    animation-delay: 4s;
+}
+.blob3 {
+    width: 180px; height: 180px;
+    background: var(--medium-brown);
+    top: 60%; left: 60%;
+    animation-delay: 8s;
+}
+@keyframes blobMove {
+    0% { transform: scale(1) translate(0,0); }
+    50% { transform: scale(1.15) translate(40px, 30px); }
+    100% { transform: scale(1) translate(-20px, -30px); }
+}
+
+/* --- Typewriter Effect --- */
+.typewriter {
+    display: flex;
+    align-items: center;
+    min-height: 32px;
+    font-family: inherit;
+    font-size: 1.1rem;
+    margin-bottom: 28px;
+    color: var(--text-light);
+}
+#typewriter-text {
+    white-space: pre;
+}
+.typewriter-cursor {
+    display: inline-block;
+    width: 1ch;
+    color: var(--accent);
+    animation: blink 1s steps(1) infinite;
+    font-weight: bold;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* --- Hero Social Links --- */
+.hero-social-links {
+    display: flex;
+    gap: 18px;
+    margin: 18px 0 0 0;
+    z-index: 2;
+}
+.hero-social-links a {
+    color: var(--accent);
+    background: #fff2;
+    border-radius: 50%;
+    width: 38px; height: 38px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+.hero-social-links a:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: scale(1.15) rotateZ(-8deg);
+}
+
+/* --- Hero Stats --- */
+.hero-stats {
+    display: flex;
+    gap: 32px;
+    margin: 28px 0 0 0;
+    z-index: 2;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.stat {
+    background: #fff2;
+    border-radius: 14px;
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 90px;
+    box-shadow: 0 2px 8px rgba(199, 161, 122, 0.10);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.stat:hover {
+    transform: scale(1.08) rotateZ(-2deg);
+    box-shadow: 0 8px 24px rgba(199, 161, 122, 0.18);
+}
+.stat-icon {
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: 6px;
+}
+.stat-number {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--beige);
+}
+.stat-label {
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+/* --- Animated Scroll Indicator --- */
+.animated-scroll-indicator span {
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-color: var(--accent);
+    margin: 0 6px;
+    border-radius: 50%;
+    animation: bounceGlow 1.5s infinite ease-in-out;
+    box-shadow: 0 0 12px 2px var(--accent), 0 0 0 0 #fff0;
+}
+.animated-scroll-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.animated-scroll-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+@keyframes bounceGlow {
+    0%, 100% { transform: translateY(0); box-shadow: 0 0 12px 2px var(--accent), 0 0 0 0 #fff0; }
+    50% { transform: translateY(-18px); box-shadow: 0 0 24px 8px var(--accent), 0 0 0 0 #fff0; }
+}
+
+@media (max-width: 992px) {
+    .hero-bg-blobs .blob1 { width: 180px; height: 180px; }
+    .hero-bg-blobs .blob2 { width: 120px; height: 120px; }
+    .hero-bg-blobs .blob3 { width: 90px; height: 90px; }
+    .hero-stats { gap: 14px; }
+}
+@media (max-width: 576px) {
+    .hero-bg-blobs .blob1 { width: 90px; height: 90px; }
+    .hero-bg-blobs .blob2 { width: 60px; height: 60px; }
+    .hero-bg-blobs .blob3 { width: 40px; height: 40px; }
+    .hero-stats { gap: 8px; }
+    .stat { padding: 8px 10px; min-width: 60px; }
+    .stat-number { font-size: 1.05rem; }
+}
