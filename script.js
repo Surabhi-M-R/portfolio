@@ -147,4 +147,27 @@ document.addEventListener('DOMContentLoaded', function() {
             contactForm.reset();
         });
     }
+    
+    // Animate fade-in sections on scroll
+    const fadeSections = document.querySelectorAll('.fade-in-section');
+    const fadeInOnScroll = () => {
+        fadeSections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 60) {
+                section.classList.add('visible');
+            }
+        });
+    };
+    window.addEventListener('scroll', fadeInOnScroll);
+    fadeInOnScroll(); // Initial call
+
+    // Animate hero title and profile photo on load
+    document.querySelectorAll('.animated-title .title-word').forEach(word => {
+        word.style.opacity = '';
+        word.style.transform = '';
+    });
+    const heroImage = document.querySelector('.zoom-in-on-load');
+    if (heroImage) {
+        heroImage.classList.add('zoom-in-on-load');
+    }
 });

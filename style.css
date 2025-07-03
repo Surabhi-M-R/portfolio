@@ -456,13 +456,13 @@ p {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s;
     position: relative;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    transform: scale(1.04) rotateZ(-1deg) translateY(-8px);
+    box-shadow: 0 12px 32px rgba(199, 161, 122, 0.18);
 }
 
 .project-image {
@@ -812,5 +812,203 @@ p {
     .hero-content .btn {
         font-size: 0.95rem;
         padding: 8px 18px;
+    }
+}
+
+/* --- Animations and Wow Effects --- */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.fade-in-section.visible {
+    opacity: 1;
+    transform: none;
+}
+
+.zoom-in-on-load {
+    animation: zoomIn 1.2s cubic-bezier(0.23, 1, 0.32, 1) 0.2s both;
+}
+@keyframes zoomIn {
+    0% { opacity: 0; transform: scale(0.7); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.animated-title .title-word {
+    opacity: 0;
+    transform: translateY(100%);
+    display: inline-block;
+    animation: fadeInUpWord 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+.animated-title .title-word-1 { animation-delay: 0.1s; }
+.animated-title .title-word-2 { animation-delay: 0.3s; }
+.animated-title .title-word-3 { animation-delay: 0.5s; }
+.animated-title .title-word-4 { animation-delay: 0.7s; }
+.animated-title .title-word-5 { animation-delay: 0.9s; }
+@keyframes fadeInUpWord {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: box-shadow 0.3s;
+}
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.2);
+    border-radius: 100%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s, height 0.4s;
+    z-index: -1;
+}
+.btn-primary:hover::before {
+    width: 300px;
+    height: 300px;
+}
+.btn-primary:hover {
+    box-shadow: 0 8px 32px rgba(199, 161, 122, 0.3);
+}
+
+.project-card {
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s;
+}
+.project-card:hover {
+    transform: scale(1.04) rotateZ(-1deg) translateY(-8px);
+    box-shadow: 0 12px 32px rgba(199, 161, 122, 0.18);
+}
+
+/* --- Timeline Section --- */
+.timeline {
+    background: var(--light-beige);
+    padding: 80px 0 40px;
+}
+.timeline-container {
+    position: relative;
+    margin: 40px 0 0 0;
+    padding-left: 30px;
+    border-left: 3px solid var(--accent);
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+}
+.timeline-dot {
+    position: absolute;
+    left: -13px;
+    top: 8px;
+    width: 18px;
+    height: 18px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 8px rgba(199, 161, 122, 0.2);
+}
+.timeline-content {
+    background: #fff;
+    padding: 18px 24px;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(199, 161, 122, 0.08);
+    margin-left: 20px;
+}
+.timeline-content h3 {
+    margin: 0 0 6px 0;
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+/* --- Fun Facts Section --- */
+.fun-facts {
+    background: var(--medium-brown);
+    color: var(--beige);
+    padding: 70px 0 40px;
+}
+.fun-facts-list {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+}
+.fun-facts-list li {
+    background: var(--accent);
+    color: #fff;
+    padding: 16px 28px;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    box-shadow: 0 2px 8px rgba(199, 161, 122, 0.13);
+    transition: transform 0.2s;
+}
+.fun-facts-list li:hover {
+    transform: scale(1.07) rotateZ(-2deg);
+}
+
+/* --- Testimonials Section --- */
+.testimonials {
+    background: var(--light-beige);
+    padding: 80px 0 40px;
+}
+.testimonials-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: center;
+    margin-top: 40px;
+}
+.testimonial-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 16px rgba(199, 161, 122, 0.13);
+    padding: 32px 28px 24px 28px;
+    max-width: 340px;
+    min-width: 220px;
+    font-style: italic;
+    position: relative;
+    transition: transform 0.3s;
+}
+.testimonial-card:hover {
+    transform: scale(1.04) rotateZ(1deg) translateY(-6px);
+    box-shadow: 0 8px 32px rgba(199, 161, 122, 0.18);
+}
+.testimonial-card span {
+    display: block;
+    margin-top: 18px;
+    color: var(--accent);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+@media (max-width: 992px) {
+    .timeline-container {
+        padding-left: 18px;
+    }
+    .fun-facts-list {
+        gap: 10px;
+    }
+    .testimonials-grid {
+        gap: 18px;
+    }
+}
+@media (max-width: 576px) {
+    .timeline-content {
+        padding: 12px 10px;
+        font-size: 0.95rem;
+    }
+    .fun-facts-list li {
+        font-size: 0.95rem;
+        padding: 10px 12px;
+    }
+    .testimonial-card {
+        padding: 18px 10px 14px 10px;
+        font-size: 0.95rem;
     }
 }
