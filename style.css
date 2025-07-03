@@ -185,22 +185,24 @@ p {
 /* Hero Section */
 .hero {
     padding-top: 100px;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     background: linear-gradient(135deg, var(--dark-brown) 0%, var(--medium-brown) 100%);
     color: var(--text-light);
     position: relative;
     overflow: hidden;
-    flex-direction: row;
+    gap: 32px;
+    text-align: center;
 }
 
 .hero-image {
-    flex: 0 0 auto;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    margin-right: 40px;
+    margin: 0 0 10px 0;
 }
 
 .image-wrapper {
@@ -284,14 +286,19 @@ p {
 }
 
 .hero-content {
-    flex: 1;
-    padding-right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
 }
 
 .hero-title {
-    font-size: 4rem;
-    margin-bottom: 20px;
+    font-size: 3.2rem;
+    margin-bottom: 18px;
     overflow: hidden;
+    line-height: 1.1;
+    word-break: break-word;
 }
 
 .title-word {
@@ -302,10 +309,15 @@ p {
 }
 
 .hero-subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
+    font-size: 1.1rem;
+    margin-bottom: 28px;
     opacity: 0.9;
     max-width: 600px;
+    line-height: 1.5;
+}
+
+.hero-content .btn {
+    align-self: center;
 }
 
 /* About Section */
@@ -692,18 +704,35 @@ p {
 
 /* Responsive Design */
 @media (max-width: 992px) {
-    .hero-content {
-        padding-right: 0;
-        margin-bottom: 50px;
+    .hero {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 24px;
+        padding-top: 90px;
+        min-height: unset;
     }
-    
-    .hero-title {
-        font-size: 3rem;
+    .hero-image {
+        margin: 0 0 10px 0;
+        justify-content: center;
     }
-    
     .image-wrapper {
-        width: 300px;
-        height: 300px;
+        width: 140px;
+        height: 140px;
+    }
+    .hero-content {
+        align-items: center;
+        padding: 0;
+    }
+    .hero-content .btn {
+        align-self: center;
+    }
+    .hero-title {
+        font-size: 2.1rem;
+    }
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 22px;
     }
 }
 
@@ -764,5 +793,24 @@ p {
     
     .about-card {
         height: 150px;
+    }
+    .hero {
+        padding-top: 70px;
+        gap: 16px;
+    }
+    .image-wrapper {
+        width: 100px;
+        height: 100px;
+    }
+    .hero-title {
+        font-size: 1.3rem;
+    }
+    .hero-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 16px;
+    }
+    .hero-content .btn {
+        font-size: 0.95rem;
+        padding: 8px 18px;
     }
 }
