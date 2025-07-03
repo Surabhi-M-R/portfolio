@@ -184,6 +184,7 @@ p {
 
 /* Hero Section */
 .hero {
+    padding-top: 100px;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -191,45 +192,21 @@ p {
     color: var(--text-light);
     position: relative;
     overflow: hidden;
-}
-
-.hero-content {
-    flex: 1;
-    padding-right: 50px;
-}
-
-.hero-title {
-    font-size: 4rem;
-    margin-bottom: 20px;
-    overflow: hidden;
-}
-
-.title-word {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(100%);
-    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.hero-subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    opacity: 0.9;
-    max-width: 600px;
+    flex-direction: row;
 }
 
 .hero-image {
-    flex: 1;
+    flex: 0 0 auto;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    position: relative;
+    margin-right: 40px;
 }
 
 .image-wrapper {
     position: relative;
-    width: 350px;
-    height: 350px;
+    width: 180px;
+    height: 180px;
     border-radius: 20px;
     transform-style: preserve-3d;
     perspective: 1000px;
@@ -304,6 +281,31 @@ p {
     50% {
         transform: translateY(-15px);
     }
+}
+
+.hero-content {
+    flex: 1;
+    padding-right: 0;
+}
+
+.hero-title {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.title-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    max-width: 600px;
 }
 
 /* About Section */
@@ -709,7 +711,6 @@ p {
     .menu-toggle {
         display: block;
     }
-    
     .nav {
         position: fixed;
         top: 80px;
@@ -721,36 +722,30 @@ p {
         align-items: center;
         justify-content: center;
         transition: all 0.5s ease;
+        z-index: 1000;
     }
-    
     .nav.active {
         left: 0;
     }
-    
     .nav ul {
         flex-direction: column;
         align-items: center;
     }
-    
     .nav li {
         margin: 15px 0;
     }
-    
     .hero {
+        flex-direction: column;
         text-align: center;
         padding-top: 100px;
     }
-    
-    .hero-title {
-        font-size: 2.5rem;
+    .hero-image {
+        justify-content: center;
+        margin: 0 0 20px 0;
     }
-    
-    .hero-subtitle {
-        margin: 0 auto 30px;
-    }
-    
     .image-wrapper {
-        margin: 0 auto;
+        width: 140px;
+        height: 140px;
     }
 }
 
